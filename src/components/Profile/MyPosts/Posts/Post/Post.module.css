@@ -1,0 +1,14 @@
+.posts {
+    margin: 5px 10px;
+}
+.item{
+    color: greenyellow;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.item > img{
+    width: 100px;
+    margin: 10px;
+}
