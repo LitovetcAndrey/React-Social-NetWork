@@ -1,10 +1,10 @@
 import React from "react";
 import s from "./Post.module.css"
+import {person} from "../MyPosts";
 
 const Post = (props) => {
     console.log("Props", props);
-    console.log("Props name", props.obj);
-
+    console.log("Props name", props.data);
     return (
         <div>
             <div className={s.item}>
@@ -12,7 +12,6 @@ const Post = (props) => {
                 <div className="wrapper">
                     <div>----</div>
                     <div>{props.messasge}</div>
-
                 </div>
             </div>
             <div className={s.decision}>
@@ -23,9 +22,11 @@ const Post = (props) => {
                 <div>
                     <span> Dislike</span>
                 </div>
+                <div>
+                    {person.title}
+                </div>
             </div>
         </div>
-
     );
 }
 export default Post

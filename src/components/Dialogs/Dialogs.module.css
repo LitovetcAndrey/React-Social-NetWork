@@ -1,0 +1,30 @@
+.dialogs {
+    display: flex;
+    flex-direction: row;
+}
+
+.dialogsItems {
+    margin: 10px;
+}
+
+.dialogsItems .selected {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.dialogs > div:first-child {
+    width: 25%;
+    color: greenyellow;
+}
+
+.messages {
+    width: 80%;
+}
+
+.dialog {
+
+}
+
+.message {
+    color: red;
+}
