@@ -1,14 +1,27 @@
-.posts {
-    margin: 5px 10px;
-}
-.item{
+.item {
     color: greenyellow;
     display: flex;
     flex-direction: row;
+}
+
+.item img {
+    width: 100px;
+    height: 100%;
+    margin: 10px;
+    border-radius: 100%;
+}
+
+.wrapper {
 
 }
 
-.item > img{
-    width: 100px;
-    margin: 10px;
+.decision {
+    width: 150px;
+    display: flex;
+    background: #fc3; /* Цвет фона */
+    border: 4px double black; /* Параметры границы */
+}
+.decision>div{
+    margin: 0 10px;
+    border: 2px  dotted  rgba(0,0,0,.8);;
 }
