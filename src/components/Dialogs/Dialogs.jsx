@@ -1,10 +1,14 @@
 import React from "react";
 import s from "./Dialogs.module.css"
+<<<<<<< HEAD
 import {NavLink} from "react-router-dom";
+=======
+>>>>>>> dc5d1c5c398cdd1a88ad6664e4fc38aa4142d384
 
 const Dialogs = () => {
     return (
         <div>
+<<<<<<< HEAD
             <div className={s.dialogs}>
                 <div className={s.dialogsItems}>
                     <div className={s.dialog}>
@@ -27,6 +31,9 @@ const Dialogs = () => {
                     <div className={s.message}>I was working</div>
                 </div>
             </div>
+=======
+            Dialogs
+>>>>>>> dc5d1c5c398cdd1a88ad6664e4fc38aa4142d384
         </div>
     );
 }
