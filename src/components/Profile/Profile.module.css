@@ -1,9 +1,4 @@
-.content {
-    grid-area: cont;
-    background-color: burlywood;
-}
-
-.content > div > img {
+div > img {
     height: 200px;
     width: 100%;
 }
@@ -20,8 +15,4 @@
 
 .descriptionUser > div {
     padding: 10px;
-}
-
-.post {
-    margin: 5px 10px;
 }
