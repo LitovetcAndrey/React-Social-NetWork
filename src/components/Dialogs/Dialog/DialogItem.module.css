@@ -1,0 +1,8 @@
+.dialog a {
+text-decoration: none;
+}
+
+.selected {
+    font-weight: bold;
+    font-size: 18px;
+}
