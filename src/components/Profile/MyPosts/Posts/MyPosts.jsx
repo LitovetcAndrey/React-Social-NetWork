@@ -9,6 +9,17 @@ export const person = {
 }
 
 const MyPosts = () => {
+    let postsData=[
+        {id:1, message:"Hello !",},
+        {id:1, message:"Hi my friend !!!"},
+        {id:1, message:"Hi, it's my first post!!!"}
+    ]
+    let likesCount=[
+        {id:1,like:5},
+        {id:2,like:4},
+        {id:3,like:8},
+
+    ]
     return (
         <div className={s.wrapper}>My Post
             <div>New post
@@ -21,9 +32,9 @@ const MyPosts = () => {
                     </div>
                 </div>
             </div>
-            <Post messasge="Hi my friend !!!" likesCount="5" data={person}/>
-            <Post messasge="Hi my friend !!!" likesCount="5"/>
-            <Post messasge="Hi, it's my first post!!!" likesCount="8"/>
+            <Post messasge={postsData[0].message} likesCount={likesCount[0].like} />
+            <Post messasge={postsData[1].message} likesCount={likesCount[1].like}/>
+            <Post messasge={postsData[2].message} likesCount={likesCount[2].like}/>
             <Post/>
         </div>
     );

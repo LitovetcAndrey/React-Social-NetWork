@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Post.module.css"
-import {person} from "../MyPosts";
+
 
 const Post = (props) => {
     return (
@@ -19,9 +19,6 @@ const Post = (props) => {
                 {props.likesCount}
                 <div>
                     <span> Dislike</span>
-                </div>
-                <div>
-                    {person.title}
                 </div>
             </div>
         </div>
