@@ -26,19 +26,26 @@ const Dialogs = () => {
         <div>
             <div className={s.dialogs}>
                 <div className={s.dialogsItems}>
-                    <DialogItem id={dialogsData[0].id} name={dialogsData[0].name}/>
-                    <DialogItem id={dialogsData[1].id} name={dialogsData[1].name}/>
-                    <DialogItem id={dialogsData[2].id} name={dialogsData[2].name}/>
-                    <DialogItem id={dialogsData[3].id} name={dialogsData[3].name}/>
+                    {/*<DialogItem id={dialogsData[0].id} name={dialogsData[0].name}/>*/}
+                    {/*<DialogItem id={dialogsData[1].id} name={dialogsData[1].name}/>*/}
+                    {/*<DialogItem id={dialogsData[2].id} name={dialogsData[2].name}/>*/}
+                    {/*<DialogItem id={dialogsData[3].id} name={dialogsData[3].name}/>*/}
+                    {dialogsData.map(function (dialogsData) {
+                        return <DialogItem id={dialogsData.id} name={dialogsData.name}/>
+                    })}
+
                 </div>
                 <div className={s.messages}>
-                    <Message message={messagesData[0].message}/>
-                    <Message message={messagesData[1].message}/>
-                    <Message message={messagesData[2].message}/>
-                    <Message message={messagesData[3].message}/>
-                    <Message message={messagesData[4].message}/>
-                    <Message message={messagesData[5].message}/>
-                    <Message message={messagesData[6].message}/>
+                    {/*<Message message={messagesData[0].message}/>*/}
+                    {/*<Message message={messagesData[1].message}/>*/}
+                    {/*<Message message={messagesData[2].message}/>*/}
+                    {/*<Message message={messagesData[3].message}/>*/}
+                    {/*<Message message={messagesData[4].message}/>*/}
+                    {/*<Message message={messagesData[5].message}/>*/}
+                    {/*<Message message={messagesData[6].message}/>*/}
+                    {messagesData.map(function (messagesData) {
+                        return <Message message={messagesData.message}/>
+                    })}
                 </div>
             </div>
         </div>
