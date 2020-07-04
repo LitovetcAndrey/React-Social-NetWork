@@ -3,8 +3,6 @@ import s from "./Post.module.css"
 import {person} from "../MyPosts";
 
 const Post = (props) => {
-    console.log("Props", props);
-    console.log("Props name", props.obj);
     return (
         <div>
             <div className={s.item}>

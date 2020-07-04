@@ -1,30 +1,27 @@
 import React from "react";
 import s from "./Dialogs.module.css"
 import {NavLink} from "react-router-dom";
+import Message from "./Message/Message";
+import DialogItem from "./Dialog/DialogItem";
 
 const Dialogs = () => {
     return (
         <div>
             <div className={s.dialogs}>
                 <div className={s.dialogsItems}>
-                    <div className={s.dialog}>
-                        <NavLink to="/dialogs/1" activeClassName={s.selected}>Сообщения Dima</NavLink>
-                    </div>
-                    <div className={s.dialog}>
-                        <NavLink to="/dialogs/2" activeClassName={s.selected}>Сообщения Pety</NavLink>
-                    </div>
-                    <div className={s.dialog}>
-                        <NavLink to="/dialogs/3" activeClassName={s.selected}>Сообщения Koly</NavLink>
-                    </div>
+                    <DialogItem id="1" name="Dima"/>
+                    <DialogItem id="2" name="Pety"/>
+                    <DialogItem id="3" name="Koly"/>
+                    <DialogItem id="4" name="Masha"/>
                 </div>
                 <div className={s.messages}>
-                    <div className={s.message}>Hello</div>
-                    <div className={s.message}>How are your React</div>
-                    <div className={s.message}>Weather id good</div>
-                    <div className={s.message}>I am working right now</div>
-                    <div className={s.message}>I have been working for an hour</div>
-                    <div className={s.message}>I was work</div>
-                    <div className={s.message}>I was working</div>
+                    <Message message="Hello"/>
+                    <Message message="How are your React"/>
+                    <Message message="Weather id good"/>
+                    <Message message="I am working right now"/>
+                    <Message message="I have been working for an hour"/>
+                    <Message message="I was work"/>
+                    <Message message="I was working"/>
                 </div>
             </div>
         </div>

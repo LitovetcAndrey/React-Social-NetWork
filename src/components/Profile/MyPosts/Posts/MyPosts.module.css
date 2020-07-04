@@ -1,4 +1,11 @@
 .posts {
-    margin: 5px 10px;
+    margin: 5px 5px;
 }
 
+.wrapper{
+    padding: 0 10px;
+}
+
+.wrapper>div:first-child{
+    margin-bottom:30px;
+}

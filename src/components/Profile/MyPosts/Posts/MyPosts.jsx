@@ -10,10 +10,15 @@ export const person = {
 
 const MyPosts = () => {
     return (
-        <div>My Post
+        <div className={s.wrapper}>My Post
             <div>New post
                 <div>
-                    <button>Add post</button>
+                    <div>
+                        <textarea name="" id="" cols="30" rows="2"></textarea>
+                    </div>
+                    <div>
+                        <button>Add post</button>
+                    </div>
                 </div>
             </div>
             <Post messasge="Hi my friend !!!" likesCount="5" data={person}/>

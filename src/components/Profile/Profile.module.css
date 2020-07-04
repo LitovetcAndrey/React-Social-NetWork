@@ -2,17 +2,3 @@ div > img {
     height: 200px;
     width: 100%;
 }
-
-.face {
-    height: 100px;
-}
-
-.descriptionUser {
-    display: flex;
-    flex-direction: row;
-    margin: 10px;
-}
-
-.descriptionUser > div {
-    padding: 10px;
-}
