@@ -28,12 +28,25 @@ const App = (props) => {
         {id: 6, message: "I was work"},
         {id: 7, message: "I was working"},
     ]
-  // let data=[dialogs,messages];
-  let data = {
-      "dialogs":dialogs,
-      "messages":messages
-  }
 
+    // let data=[dialogs,messages];
+    let data = {
+        "dialogs":dialogs,
+        "messages":messages
+    }
+
+    let posts = [
+        {id: 1, message: "Hello !", likesCount: 3},
+        {id: 2, message: "Hi my friend !!!", likesCount: 4},
+        {id: 3, message: "Hi, it's my first post!!!", likesCount: 8},
+        {id: 3, message: "Hi, it's my first post!!!", likesCount: 8},
+        {id: 3, message: "Hi, it's my first post!!!", likesCount: 8},
+        {id: 3, message: "Hi, it's my first post!!!", likesCount: 8},
+        {id: 3, message: "Hi, it's my first post!!!", likesCount: 8},
+        {id: 3, message: "Hi, it's my first post!!!", likesCount: 8},
+        {id: 3, message: "Hi, it's my first post!!!", likesCount: 8},
+        {id: 3, message: "Hi, it's my first post!!!", likesCount: 8},
+    ];
 
     return (
         <BrowserRouter>
@@ -46,7 +59,7 @@ const App = (props) => {
                         {/*<Route path="/profile" component={Profile}/>*/}
                         {/*<Route path="/dialogs" component={SomeComponent}/>*/}
                         <Route path="/dialogs" render={()=><Dialogs data={data} />}/>
-                        <Route path="/profile" render={()=><Profile />}/>
+                        <Route path="/profile" render={()=><Profile posts={posts} />}/>
                     </div>
                 </div>
             </div>
