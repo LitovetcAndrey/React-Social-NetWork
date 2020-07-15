@@ -2,20 +2,15 @@ import React from "react";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 
+const MyPosts = (props) => {
 
-export const person = {
-    title: "Dima",
-    age: 15
-}
+    // let posts = [
+    //     {id: 1, message: "Hello !", likesCount: 3},
+    //     {id: 2, message: "Hi my friend !!!", likesCount: 4},
+    //     {id: 3, message: "Hi, it's my first post!!!", likesCount: 8}
+    // ];
 
-const MyPosts = () => {
-    let posts=[
-        {id:1, message:"Hello !",likesCount:3},
-        {id:2, message:"Hi my friend !!!",likesCount:4},
-        {id:3, message:"Hi, it's my first post!!!",likesCount:8}
-    ] ;
-
-    let postsElements=posts.map(p=> <Post messasge={p.message} likesCount={p.likesCount}  />);
+    let postsElements = props.data.map(p => <Post id={p.id} messasge={p.message} likesCount={p.likesCount} />);
 
     return (
         <div className={s.wrapper}>My Post
