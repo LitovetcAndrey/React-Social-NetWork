@@ -3,21 +3,13 @@ import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-
-    // let posts = [
-    //     {id: 1, message: "Hello !", likesCount: 3},
-    //     {id: 2, message: "Hi my friend !!!", likesCount: 4},
-    //     {id: 3, message: "Hi, it's my first post!!!", likesCount: 8}
-    // ];
-
-    let postsElements = props.data.map(p => <Post id={p.id} messasge={p.message} likesCount={p.likesCount} />);
-
+    let postsElements = props.posts.map(p => <Post id={p.id} messasge={p.message} likesCount={p.likesCount} />);
     return (
         <div className={s.wrapper}>My Post
             <div>New post
                 <div>
                     <div>
-                        <textarea name="" id="" cols="30" rows="2"></textarea>
+                        <textarea  cols="30" rows="2"></textarea>
                     </div>
                     <div>
                         <button>Add post</button>
@@ -25,6 +17,7 @@ const MyPosts = (props) => {
                 </div>
             </div>
             {postsElements}
+
         </div>
     );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Aside.module.css"
 import {NavLink} from "react-router-dom";
 
-console.log("class s = ", s);
+//console.log("class s = ", s);
 //для использования двух классов
 // let classesNew=`${s.item} ${s.active}`
 
