@@ -6,7 +6,12 @@ const Profile = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.state.posts} addPost={props.addPost}/>
+            <MyPosts
+                posts={props.stateProfilePage.posts}
+                addPost={props.addPost}
+                newPostText={props.stateProfilePage.newPostText}
+                updateNewPostChange={props.updateNewPostChange}
+            />
         </div>);
 }
 export default Profile
