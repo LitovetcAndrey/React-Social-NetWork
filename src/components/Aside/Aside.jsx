@@ -1,16 +1,17 @@
 import React from "react";
 import s from "./Aside.module.css"
 import {NavLink} from "react-router-dom";
+import SiteBar from "./SiteBar/SiteBar";
 
 //console.log("class s = ", s);
 //для использования двух классов
 // let classesNew=`${s.item} ${s.active}`
 
-const Aside = () => {
+const Aside = (props) => {
     return (
         <aside className={s.aside}>
             <div className={s.item}>
-                <NavLink   to="/profile" activeClassName={s.selected}>Profile</NavLink>
+                <NavLink to="/profile" activeClassName={s.selected}>Profile</NavLink>
             </div>
             <div className={s.item}>
                 {/* Два класса вместе */}
@@ -26,6 +27,8 @@ const Aside = () => {
             <div>
                 <NavLink to="#">Settings</NavLink>
             </div>
+
+            <SiteBar state={props.state}/>
         </aside>)
 };
 
