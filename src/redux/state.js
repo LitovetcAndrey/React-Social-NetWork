@@ -33,6 +33,10 @@
 //     {id: 10, message: "Hi, it's my first post!!!", likesCount: 8},
 // ];
 
+
+
+import {rerenderEntireTree} from "../render";
+
 let state = {
     profilePage: {
         posts: [
@@ -71,6 +75,18 @@ let state = {
             {id: 2, name: "Pety",photo:"https://kpfu.ru/portal/docs/F481714198/20160208_learned_cat_blog_Einstein.jpg"}
         ]
     }
+}
+
+export let addPost=(postMessage)=>{
+
+    let newPost={
+        id:5,
+        message:postMessage,
+        likesCount:0
+    };
+
+    state.profilePage.posts.push(newPost);
+    rerenderEntireTree(state);
 }
 
 export default state;
