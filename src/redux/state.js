@@ -33,10 +33,10 @@
 //     {id: 10, message: "Hi, it's my first post!!!", likesCount: 8},
 // ];
 
-
-
-import {rerenderEntireTree} from "../render";
-
+// была переррисовка дерева в render.js
+let rerenderEntireTree = () => {
+    console.log("state has been changing or state was change, state changed ")
+}
 
 let state = {
     profilePage: {
@@ -52,7 +52,7 @@ let state = {
             {id: 9, message: "Hi, it's my first post!!!", likesCount: 8},
             {id: 10, message: "Hi, it's my first post!!!", likesCount: 8},
         ],
-        newPostText:""
+        newPostText: ""
     },
     dialogsPage: {
         dialogs: [
@@ -73,29 +73,41 @@ let state = {
     },
     aside: {
         friends: [
-            {id: 1, name: "Dima",photo:"http://www.smileexpo.ru/public/upload/news/tn_10_faktov_ob_eynshteyne_kotorih_vi_ne_znali_14458667137751_image.jpg"},
-            {id: 2, name: "Pety",photo:"https://kpfu.ru/portal/docs/F481714198/20160208_learned_cat_blog_Einstein.jpg"}
+            {
+                id: 1,
+                name: "Dima",
+                photo: "http://www.smileexpo.ru/public/upload/news/tn_10_faktov_ob_eynshteyne_kotorih_vi_ne_znali_14458667137751_image.jpg"
+            },
+            {
+                id: 2,
+                name: "Pety",
+                photo: "https://kpfu.ru/portal/docs/F481714198/20160208_learned_cat_blog_Einstein.jpg"
+            }
         ]
     }
 }
 
-window.state=state;
+window.state = state;
 
-export let addPost=()=>{
-    let newPost={
-        id:5,
-        message:state.profilePage.newPostText,
-        likesCount:0
+export const addPost = () => {
+    let newPost = {
+        id: 5,
+        message: state.profilePage.newPostText,
+        likesCount: 0
     };
 
     state.profilePage.posts.push(newPost);
-    state.profilePage.newPostText="";
+    state.profilePage.newPostText = "";
     rerenderEntireTree(state);
 }
 
-export let updateNewPostChange=(newText)=>{
-   state.profilePage.newPostText=newText;
+export const updateNewPostChange = (newText) => {
+    state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
+}
+
+export  const subscribe=(observer)=>{
+    rerenderEntireTree=observer; // pattern observer
 }
 
 export default state;

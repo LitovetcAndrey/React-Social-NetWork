@@ -20,7 +20,10 @@ const Dialogs = (props) => {
     return (
         <div>
             <div>
-                <textarea ref={newMessage} cols="30" rows="2"></textarea>
+                <textarea
+                    ref={newMessage}
+                    cols="30"
+                    rows="2"/>
             </div>
             <div>
                 <button onClick={addMessage}>Add message
