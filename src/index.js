@@ -2,11 +2,10 @@ import React from 'react';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
-import store  from "./redux/state";
+import store from "./redux/state";
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-
 
 
 let rerenderEntireTree = (state) => {
@@ -14,8 +13,8 @@ let rerenderEntireTree = (state) => {
         <BrowserRouter>
             <App
                 state={state}
-                addPost={store.addPost.bind(store)}
-                updateNewPostChange={store.updateNewPostChange.bind(store)}/>
+                dispatch={store.dispatch.bind(store)}
+            />
         </BrowserRouter>,
         document.getElementById('root')
     );

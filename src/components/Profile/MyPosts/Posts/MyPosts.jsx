@@ -8,14 +8,16 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();// react создай ссылку
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch({type: `ADD-POST`});
     };
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
 
-        props.updateNewPostChange(text);
+        let action = {type: `UPDATE-NEW-POST-CHANGE`, newText: text};
+        props.dispatch(action);
     };
+
     return (
         <div className={s.wrapper}>My Post
             <div>New post

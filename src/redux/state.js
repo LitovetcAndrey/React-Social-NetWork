@@ -57,7 +57,12 @@ let store = {
         console.log("state has been changing or state was change, state changed ")
     },
 
-    addPost() {
+    subscribe(observer) {
+        this._callSubscriber = observer; // pattern observer
+    },
+
+//
+    _addPost() {
         let newPost = {
             id: 5,
             message: this._state.profilePage.newPostText,
@@ -68,13 +73,20 @@ let store = {
         this._callSubscriber(this._state);
     },
 
-    updateNewPostChange(newText) {
+    _updateNewPostChange(newText) {
         this._state.profilePage.newPostText = newText;
         this._callSubscriber(this._state);
     },
 
-    subscribe(observer) {
-        this._callSubscriber = observer; // pattern observer
+
+    dispatch(action){
+        if (action.type===`ADD-POST`){
+            this._addPost()
+        }
+        else if (action.type === `UPDATE-NEW-POST-CHANGE`){
+          this._updateNewPostChange(action.newText)
+        }
+
     }
 
 }
