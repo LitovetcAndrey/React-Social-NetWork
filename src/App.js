@@ -7,13 +7,12 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 
-
 const App = (props) => {
     return (
         <div className="App">
             <Header/>
             <div className="app-wrapper">
-                <Aside state={props.state.aside}/>
+                <Aside state={props.state.sidebar}/>
                 <div className="app-wrapper-content">
                     <Route path="/dialogs" render={() =>
                         <Dialogs store={props.store}
