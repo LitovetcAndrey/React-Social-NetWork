@@ -8,6 +8,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 
 const App = (props) => {
+
     return (
         <div className="App">
             <Header/>
@@ -22,7 +23,9 @@ const App = (props) => {
                     <Route path="/profile" render={() =>
                         <Profile
                             state={props.state.profilePage}
-                            dispatch={props.dispatch}/>}
+                            dispatch={props.dispatch}
+                            store={props.store}
+                        />}
                     />
                 </div>
             </div>

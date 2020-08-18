@@ -28,6 +28,7 @@ const Dialogs = (props) => {
                 <textarea
                     onChange={onNewMessageChange}
                     value={state.newMessageBody}
+                    placeholder={"enter your massage"}
                     //value={props.store.getState().dialogsPage.newMessageBody}
                     cols="30" rows="2"/>
             </div>
