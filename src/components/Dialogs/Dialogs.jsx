@@ -4,22 +4,19 @@ import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
 
-
 const Dialogs = (props) => {
+    let state = props.dialogPage;
+    let dialogsElements = props.dialogPage.dialogs.map(d => <DialogItem id={d.id} name={d.name}/>);
 
-    let state=props.store.getState().dialogsPage;
-    let dialogsElements = state.dialogs.map(d => <DialogItem id={d.id} name={d.name}/>);
-
-    let messagesElements = state.messages.map(m => <Message id={m.id} message={m.message}/>);
+    let messagesElements =  props.dialogPage.messages.map(m => <Message id={m.id} message={m.message}/>);
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator())
+        props.sendMessage()
     }
 
     let onNewMessageChange = (e) => {
-        let body=e.target.value;
-        let action = updateNewMessageBodyCreator(body);
-        props.store.dispatch(action);
+        let body = e.target.value;
+        props.updateNewMessageBody(body);
     }
 
     return (
@@ -27,10 +24,9 @@ const Dialogs = (props) => {
             <div>
                 <textarea
                     onChange={onNewMessageChange}
-                    value={state.newMessageBody}
+                    value={ state.newMessageBody}
                     placeholder={"enter your massage"}
-                    //value={props.store.getState().dialogsPage.newMessageBody}
-                    cols="30" rows="2"/>
+                />
             </div>
             <div>
                 <button onClick={onSendMessageClick}>Add message
