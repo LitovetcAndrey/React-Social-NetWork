@@ -2,8 +2,7 @@ import React from "react";
 import s from './SiteBar.module.css'
 
 const SiteBar = (props) => {
-
-    let friendsElements = props.state.friends.map(f =>
+    let friendsElements = props.sidebar.friends.map(f =>
         <div className={s.item}>
             <img className={s.face} src={f.photo} alt="" align="bottom"/>
               <div>{f.name}</div>

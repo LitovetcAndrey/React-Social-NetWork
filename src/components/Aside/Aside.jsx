@@ -2,12 +2,14 @@ import React from "react";
 import s from "./Aside.module.css"
 import {NavLink} from "react-router-dom";
 import SiteBar from "./SiteBar/SiteBar";
+import SiteBarContainer from "./SiteBar/SiteBarContainer";
 
 //console.log("class s = ", s);
 //для использования двух классов
 // let classesNew=`${s.item} ${s.active}`
 
 const Aside = (props) => {
+
     return (
         <aside className={s.aside}>
             <div className={s.item}>
@@ -28,7 +30,7 @@ const Aside = (props) => {
                 <NavLink to="#">Settings</NavLink>
             </div>
 
-            <SiteBar state={props.state}/>
+            <SiteBarContainer  />
         </aside>)
 };
 

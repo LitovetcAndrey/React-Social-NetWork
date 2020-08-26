@@ -2,10 +2,11 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import Header from "./components/Header/Header";
-import Aside from "./components/Aside/Aside";
 import Profile from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import Aside from "./components/Aside/Aside";
+
 
 const App = (props) => {
 
@@ -13,17 +14,17 @@ const App = (props) => {
         <div className="App">
             <Header/>
             <div className="app-wrapper">
-                <Aside state={props.state.sidebar}/>
+                <Aside/>
                 <div className="app-wrapper-content">
                     <Route path="/dialogs" render={() =>
                         <DialogsContainer
-                            store={props.store}
+                            // store={props.store}
                         />}
                     />
 
                     <Route path="/profile" render={() =>
                         <Profile
-                            store={props.store}
+                            //  store={props.store}
                         />}
                     />
                 </div>
