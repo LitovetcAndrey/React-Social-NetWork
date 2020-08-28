@@ -3,7 +3,7 @@ import s from './SiteBar.module.css'
 
 const SiteBar = (props) => {
     let friendsElements = props.sidebar.friends.map(f =>
-        <div className={s.item}>
+        <div className={s.item} key={f.id}>
             <img className={s.face} src={f.photo} alt="" align="bottom"/>
               <div>{f.name}</div>
         </div>
