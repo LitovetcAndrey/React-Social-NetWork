@@ -1,11 +1,13 @@
 import React from "react";
 import s from "./UserItem.module.css"
+import userPhoto from "../../../assets/images/user.png"
 
 const UserItem = (props) => {
+   //debugger
      return (
         <div className={s.container}>
             <div className={s.photo}>
-                <img src={props.photo} alt=""/>
+                <img src={props.photo!=null?props.photo:userPhoto} alt=""/>
                 <div className={s.button}>
                     {props.followed ? <button
                             onClick={() => {
@@ -23,7 +25,7 @@ const UserItem = (props) => {
                         <div> {props.status}</div>
                     </div>
                     <div>
-                        <div> {props.location.city}</div>
+                        {/*<div> {props.location.city}</div>*/}
                     </div>
 
                 </div>
