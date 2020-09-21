@@ -4,12 +4,18 @@ import {
     addUsersAC,
     followActionCreator,
     setUsersActionCreator,
-    unFollowActionCreator
+    unFollowActionCreator,
+    setCurrentPageAC,
+    setUsersTotalCountAC,
+
 } from "../../redux/users-reduser";
 
 let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
+        pageSize: state.usersPage.pageSize,
+        totalUserCount:state.usersPage.totalUsersCount,
+        currentPage:state.usersPage.currentPage,
     }
 };
 let mapDispatchToProps = (dispatch) => {
@@ -25,6 +31,12 @@ let mapDispatchToProps = (dispatch) => {
         },
         addUsers: (user) => {
             dispatch(addUsersAC(user))
+        },
+        setCurrentPage: (numberPage) => {
+            dispatch(setCurrentPageAC(numberPage))
+        },
+        setTotalUsersCount: (totalCount) => {
+            dispatch(setUsersTotalCountAC(totalCount))
         },
     }
 };

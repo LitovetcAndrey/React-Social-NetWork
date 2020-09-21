@@ -1,68 +1,63 @@
 import React from "react";
 import UserItem from "./UserItem/UserItem";
 import * as axios from "axios";
+import s from "./Users.module.css"
 
 class UsersClass extends React.Component {
-    constructor(props) {
-        super(props);
-       // alert("Worked constructor");
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+
+
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items);
+            this.props.setTotalUsersCount(response.data.totalCount);
         });
     }
 
-    // userElements = this.props.users.map(d =>
-    //     <UserItem
-    //         key={d.id}
-    //         id={d.id}
-    //         fullName={d.name}
-    //         photo={d.photos.small}
-    //         status={d.status}
-    //         location={d.location}
-    //         followed={d.followed}
-    //         // for callback
-    //         follow={this.props.follow}
-    //         unfollow={this.props.unFollow}
-    //         setUsers={this.props.setUsers}
-    //         addUsers={this.props.addUsers}
-    //     />);
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+            this.props.setUsers(response.data.items);
+            this.props.setTotalUsersCount(response.data.totalCount);
 
-    // getUsers = () => {
-    //     debugger
-    //     if (this.props.users.length === 0) {
-    //         axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-    //             this.props.setUsers(response.data.items);
-    //         });
-    //     }
-    // }
-
-
+        });
+    }
 
     render() {
-      //  debugger
+        //  debugger
+        let userElements = this.props.users.map(d =>
+            <UserItem
+                key={d.id}
+                id={d.id}
+                fullName={d.name}
+                photo={d.photos.small}
+                status={d.status}
+                location={d.location}
+                followed={d.followed}
+                // for callback
+                follow={this.props.follow}
+                unfollow={this.props.unFollow}
+            />);
+
+        let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize);
+
+        let pages = [];
+
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
+
+
         return (
             <div>
-                {/*<button onClick={this.getUsers}>Get users</button>*/}
                 <div>
-                    {/*{this.userElements}   dont work*/}
-
                     {
-                        this.props.users.map(d =>
-                            <UserItem
-                                key={d.id}
-                                id={d.id}
-                                fullName={d.name}
-                                photo={d.photos.small}
-                                status={d.status}
-                                location={d.location}
-                                followed={d.followed}
-                                // for callback
-                                follow={this.props.follow}
-                                unfollow={this.props.unFollow}
-                                setUsers={this.props.setUsers}
-                                addUsers={this.props.addUsers}
-                            />)
+                        pages.map(p => <button
+                            className={this.props.currentPage === p ? s.selectedPage : ""}
+                            onClick={e => this.onPageChanged(p)}>{p}</button>)
                     }
+                </div>
+                <div>
+                    {userElements}
                 </div>
             </div>
         )
