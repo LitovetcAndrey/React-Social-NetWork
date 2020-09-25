@@ -9,9 +9,10 @@ const UserItem = (props) => {
             <div className={s.photo}>
                 <img src={props.photo!=null?props.photo:userPhoto} alt=""/>
                 <div className={s.button}>
-                    {props.followed ? <button
+                    {props.followed ?
+                        <button
                             onClick={() => {
-                             props.unfollow(props.id)
+                             props.unFollow(props.id)
                             }}> UnFollow </button>
                         : <button  onClick={() => {
                             props.follow(props.id)
