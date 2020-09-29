@@ -1,6 +1,5 @@
 import React from "react";
 import UserItem from "./UserItem/UserItem";
-import * as axios from "axios";
 import s from "./Users.module.css"
 
 
@@ -34,8 +33,8 @@ let Users = (props) => {
         <div>
             <div>
                 {
-                    pages.map(p => <button
-                        className={props.currentPage === p && s.selectedPage}
+                    pages.map(p => <button key={p}
+                        className={props.currentPage === p ? s.selectedPage:null}
                         onClick={e => props.onPageChanged(p)}>{p}</button>)
                 }
             </div>

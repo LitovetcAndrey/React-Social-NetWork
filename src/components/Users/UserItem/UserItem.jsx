@@ -7,7 +7,10 @@ const UserItem = (props) => {
      return (
         <div className={s.container}>
             <div className={s.photo}>
-                <img src={props.photo!=null?props.photo:userPhoto} alt=""/>
+                    {/*<NavLink to={`/profile`+ props.id}>*/}
+                        <img src={props.photo!=null?props.photo:userPhoto} alt=""/>
+                    {/*</NavLink>*/}
+
                 <div className={s.button}>
                     {props.followed ?
                         <button
