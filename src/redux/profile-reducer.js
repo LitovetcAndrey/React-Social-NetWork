@@ -1,5 +1,6 @@
 const UPDATE_NEW_POST_CHANGE = `UPDATE-NEW-POST-CHANGE`;
 const ADD_POST = `ADD-POST`;
+const SET_USER_PROFILE = `SET-USER-PROFILE`;
 
 let initialState = {
     posts: [
@@ -8,10 +9,10 @@ let initialState = {
         {id: 3, message: "Hi, it's my first post!!!", likesCount: 8},
     ],
     newPostText: "",
+    profile: null,
 }
 
 const profileReducer = (state = initialState, action) => {
-    //let stateCopy;
     switch (action.type) {
         case  ADD_POST: {
             let newPost = {
@@ -26,15 +27,20 @@ const profileReducer = (state = initialState, action) => {
         }
         case  UPDATE_NEW_POST_CHANGE: {
             return {...state, newPostText: action.newText};
-            // stateCopy.newPostText = action.newText;
-            // return stateCopy;
         }
+
+        case  SET_USER_PROFILE: {
+            return {...state, profile: action.profile};
+        }
+
         default:
             return state;
     }
 }
 
+//creaters
 export const addPost = () => ({type: ADD_POST});
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const updateNewPostChange = (text) => ({
     type: UPDATE_NEW_POST_CHANGE,
     newText: text
