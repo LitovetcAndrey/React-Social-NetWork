@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import Profile from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
@@ -14,7 +14,7 @@ const App = (props) => {
 
     return (
         <div className="App">
-            <Header/>
+            <HeaderContainer/>
             <div className="app-wrapper">
                 <Aside/>
                 <div className="app-wrapper-content">

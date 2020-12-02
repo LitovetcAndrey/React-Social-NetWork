@@ -1,3 +1,11 @@
 .bold {
-    font-weight: bold ;
+    font-weight: bold;
+    display: flex;
+}
+
+.loginBlock {
+
+    position: absolute;
+    right: 100px;
+
 }
