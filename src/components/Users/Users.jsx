@@ -2,7 +2,6 @@ import React from "react";
 import UserItem from "./UserItem/UserItem";
 import s from "./Users.module.css"
 
-
 let Users = (props) => {
 
     let userElements = props.users.map(d =>
@@ -15,7 +14,6 @@ let Users = (props) => {
             location={d.location}
             followed={d.followed}
             // for callback
-
             follow={props.follow}
             unFollow={props.unFollow}
         />);
