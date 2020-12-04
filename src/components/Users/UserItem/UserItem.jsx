@@ -16,18 +16,23 @@ const UserItem = (props) => {
 
                 <div className={s.button}>
                     {
-                        props.followed ? <button onClick={() => {
+                        props.followed ?
+                            <button disabled={props.followingInProgress.some(id=>id===props.id)} onClick={() => {
+                                props.togleFollowingProgress(true,props.id);
                                 usersAPI.unFollowUser(props.id).then(data => {
                                     if (data.resultCode == 0) {
                                         props.unFollow(props.id)
                                     }
+                                    props.togleFollowingProgress(false,props.id);
                                 });
                             }}> UnFollow </button> :
-                            <button onClick={() => {
+                            <button disabled={props.followingInProgress.some(id=>id===props.id)} onClick={() => {
+                                props.togleFollowingProgress(true,props.id);
                                 usersAPI.followUser(props.id).then(data => {
                                     if (data.resultCode == 0) {
                                         props.follow(props.id)
                                     }
+                                    props.togleFollowingProgress(false,props.id);
                                 });
                             }}> Follow </button>}
                 </div>
