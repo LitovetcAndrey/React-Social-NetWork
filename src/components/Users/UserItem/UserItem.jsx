@@ -3,7 +3,7 @@ import s from "./UserItem.module.css"
 import userPhoto from "../../../assets/images/user.png"
 import {NavLink} from 'react-router-dom';
 import * as axios from "axios";
-import {unFollowUser,followUser} from "./../../../api/api"
+import {usersAPI} from "./../../../api/api"
 
 const UserItem = (props) => {
     //debugger
@@ -17,14 +17,14 @@ const UserItem = (props) => {
                 <div className={s.button}>
                     {
                         props.followed ? <button onClick={() => {
-                                unFollowUser(props.id).then(data => {
+                                usersAPI.unFollowUser(props.id).then(data => {
                                     if (data.resultCode == 0) {
                                         props.unFollow(props.id)
                                     }
                                 });
                             }}> UnFollow </button> :
                             <button onClick={() => {
-                                followUser(props.id).then(data => {
+                                usersAPI.followUser(props.id).then(data => {
                                     if (data.resultCode == 0) {
                                         props.follow(props.id)
                                     }
