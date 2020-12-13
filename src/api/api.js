@@ -52,11 +52,11 @@ export const usersAPI = {
         return instance.get(`/auth/me`, {withCredentials: true}).then(response => response.data);
     },
 
-    unFollow(id) {
+    unFollowSuccess(id) {
         return instance.delete(`follow/${id}`).then(response => response.data);
     },
 
-    follow(id) {
+    followSuccess(id) {
         return instance.post(`follow/${id}`, null)
             .then(response => response.data);
     },

@@ -4,7 +4,7 @@ import userPhoto from "../../../assets/images/user.png"
 import {NavLink} from 'react-router-dom';
 import * as axios from "axios";
 import {usersAPI} from "./../../../api/api"
-import {unFollowUser,followUser} from "./../../../redux/users-reduser"
+import {unFollow,follow} from "./../../../redux/users-reduser"
 
 const UserItem = (props) => {
     //debugger
@@ -19,10 +19,10 @@ const UserItem = (props) => {
                     {
                         props.followed ?
                             <button disabled={props.followingInProgress.some(id=>id===props.id)} onClick={() => {
-                                props.unFollowUser(props.id);
+                                props.unFollow(props.id);
                             }}> UnFollow </button> :
                             <button disabled={props.followingInProgress.some(id=>id===props.id)} onClick={() => {
-                             props.followUser(props.id);
+                             props.follow(props.id);
                             }}> Follow </button>}
                 </div>
             </div>

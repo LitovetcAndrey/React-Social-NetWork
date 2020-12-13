@@ -14,13 +14,13 @@ let Users = (props) => {
             followed={d.followed}
 
             // for callback
-            follow={props.follow}
-            unFollow={props.unFollow}
+            followSuccess={props.followSuccess}
+            unFollowSuccess={props.unFollowSuccess}
             followingInProgress={props.followingInProgress}
 
             //thunk
-            followUser={props.followUser}
-            unFollowUser={props.unFollowUser}
+            follow={props.follow}
+            unFollow={props.unFollow}
 
             //state
             togleFollowingProgress={props.togleFollowingProgress}

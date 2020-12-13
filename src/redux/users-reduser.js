@@ -69,8 +69,8 @@ const usersReducer = (state = initialState, action) => {
 }
 
 //actionCreator
-export const follow = (userId) => ({type: FOLLOW, userId});
-export const unFollow = (userId) => ({type: UNFOLLOW, userId});
+export const followSuccess = (userId) => ({type: FOLLOW, userId});
+export const unFollowSuccess = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const addUsers = (user) => ({type: ADD_USERS, user});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
@@ -108,26 +108,26 @@ export const getPagePresent = (pageSize, pageNumber) => {
     }
 }
 
-export const unFollowUser = (id) => {
+export const unFollow = (userId) => {
     return (dispatch) => {
-      dispatch(togleFollowingProgress(true,id));
-        usersAPI.unFollow(id).then(data => {
+      dispatch(togleFollowingProgress(true,userId));
+        usersAPI.unFollowSuccess(userId).then(data => {
             if (data.resultCode == 0) {
-               dispatch(unFollow(id));
+               dispatch(unFollowSuccess(userId));
             }
-           dispatch(togleFollowingProgress(false,id));
+           dispatch(togleFollowingProgress(false,userId));
         });
     }
 };
 
-export const followUser = (id) => {
+export const follow = (userId) => {
     return (dispatch) => {
-        dispatch(togleFollowingProgress(true,id));
-        usersAPI.follow(id).then(data => {
+        dispatch(togleFollowingProgress(true,userId));
+        usersAPI.followSuccess(userId).then(data => {
             if (data.resultCode == 0) {
-                dispatch(follow(id));
+                dispatch(followSuccess(userId));
             }
-            dispatch(togleFollowingProgress(false,id));
+            dispatch(togleFollowingProgress(false,userId));
         });
     }
 };
