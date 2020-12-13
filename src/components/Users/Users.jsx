@@ -3,7 +3,6 @@ import UserItem from "./UserItem/UserItem";
 import s from "./Users.module.css"
 
 let Users = (props) => {
-
     let userElements = props.users.map(d =>
         <UserItem
             key={d.id}
@@ -18,6 +17,10 @@ let Users = (props) => {
             follow={props.follow}
             unFollow={props.unFollow}
             followingInProgress={props.followingInProgress}
+
+            //thunk
+            followUser={props.followUser}
+            unFollowUser={props.unFollowUser}
 
             //state
             togleFollowingProgress={props.togleFollowingProgress}
@@ -38,8 +41,8 @@ let Users = (props) => {
             <div>
                 {
                     pages.map(p => <button key={p}
-                        className={props.currentPage === p ? s.selectedPage:null}
-                        onClick={e => props.onPageChanged(p)}>{p}</button>)
+                                           className={props.currentPage === p ? s.selectedPage : null}
+                                           onClick={e => props.onPageChanged(p)}>{p}</button>)
                 }
             </div>
             <div>

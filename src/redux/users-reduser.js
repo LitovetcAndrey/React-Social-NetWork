@@ -1,9 +1,11 @@
+import {usersAPI} from "./../api/api"
+
 const FOLLOW = `FOLLOW`;
-const UN_FOLLOW = `UN-FOLLOW`;
-const SET_USERS = `SET-USERS`;
-const ADD_USERS = `ADD-USERS`;
-const SET_CURRENT_PAGE = `SET-CURRENT-PAGE`
-const SET_TOTAL_USERS_COUNT = `SET-TOTAL-USERS-COUNT`
+const UNFOLLOW = `UNFOLLOW`;
+const SET_USERS = `SET_USERS`;
+const ADD_USERS = `ADD_USERS`;
+const SET_CURRENT_PAGE = `SET_CURRENT_PAGE`
+const SET_TOTAL_USERS_COUNT = `SET_TOTAL_USERS_COUNT`
 const TOGGLE_IS_FETCHING = `TOGGLE_IS_FETCHING`
 const TOGGLE_IS_FOLLOWING_PROGRESS = `TOGGLE_IS_FOLLOWING_PROGRESS`
 
@@ -28,7 +30,7 @@ const usersReducer = (state = initialState, action) => {
                 })
             };
         }
-        case  UN_FOLLOW: {
+        case  UNFOLLOW: {
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -38,29 +40,21 @@ const usersReducer = (state = initialState, action) => {
                 })
             };
         }
-
         case  SET_USERS: {
-            return {...state, users: action.users}
-
+            return {...state, users: [...action.users]}
         }
-
         case  ADD_USERS: {
-            return {...state, users: [...action.users, ...action.user]}
-
+            return {...state, users: [...state.users, ...action.users]}
         }
-
         case  SET_CURRENT_PAGE: {
             return {...state, currentPage: action.currentPage}
         }
-
         case  SET_TOTAL_USERS_COUNT: {
             return {...state, totalUsersCount: action.totalUsersCount}
         }
-
         case  TOGGLE_IS_FETCHING: {
             return {...state, isFetching: action.isFetching}
         }
-
         case  TOGGLE_IS_FOLLOWING_PROGRESS: {
             return {
                 ...state,
@@ -69,15 +63,14 @@ const usersReducer = (state = initialState, action) => {
                     : [state.followingInProgress.filter(id => id !== action.userId)]
             }
         }
-
         default:
             return state;
     }
 }
 
-
+//actionCreator
 export const follow = (userId) => ({type: FOLLOW, userId});
-export const unFollow = (userId) => ({type: UN_FOLLOW, userId});
+export const unFollow = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const addUsers = (user) => ({type: ADD_USERS, user});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
@@ -89,4 +82,56 @@ export const togleFollowingProgress = (isFetching, userId) => ({
     userId
 });
 
-export default usersReducer
+//thunk
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setUsersTotalCount(data.totalCount));
+        });
+    }
+};
+
+export const getPagePresent = (pageSize, pageNumber) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        dispatch(setCurrentPage(pageNumber));
+
+        usersAPI.getUsers(pageNumber, pageSize).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setUsersTotalCount(data.totalCount));
+        });
+    }
+}
+
+export const unFollowUser = (id) => {
+    return (dispatch) => {
+      dispatch(togleFollowingProgress(true,id));
+        usersAPI.unFollow(id).then(data => {
+            if (data.resultCode == 0) {
+               dispatch(unFollow(id));
+            }
+           dispatch(togleFollowingProgress(false,id));
+        });
+    }
+};
+
+export const followUser = (id) => {
+    return (dispatch) => {
+        dispatch(togleFollowingProgress(true,id));
+        usersAPI.follow(id).then(data => {
+            if (data.resultCode == 0) {
+                dispatch(follow(id));
+            }
+            dispatch(togleFollowingProgress(false,id));
+        });
+    }
+};
+
+
+
+export default usersReducer;
