@@ -20,8 +20,7 @@ export const usersAPI = {
     },
 
     followSuccess(id) {
-        return instance.post(`follow/${id}`, null)
-            .then(response => response.data);
+        return instance.post(`follow/${id}`, null).then(response => response.data);
     },
 
     //profilePage
@@ -29,7 +28,7 @@ export const usersAPI = {
         return instance.get(`profile/${userId}`).then(response => response.data);
 
     },
-    getUser(userId){
+    getUser(userId) {
         return instance.get(`profile/${userId}`).then(response => response.data);
 
     },
@@ -38,6 +37,7 @@ export const usersAPI = {
 
 export const authAPI = {
     me() {
-        return instance.get(`/auth/me`).then(response => response.data);
+        // return instance.get(`/auth/me`).then(response => response.data);
+        return instance.get(`/auth/me`);
     },
 }
