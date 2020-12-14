@@ -1,9 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import * as axios from "axios";
 import Users from "./Users";
 import Preloader from "./../Common/Preloader/Preloader"
-import {getUsers, getPagePresent, follow, unFollow, togleFollowingProgress} from "./../../redux/users-reduser"
+import {getUsers, follow, unFollow, togleFollowingProgress} from "./../../redux/users-reduser"
 
 
 class UsersContainer extends React.Component {
@@ -12,7 +11,7 @@ class UsersContainer extends React.Component {
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.getPagePresent(this.props.pageSize, pageNumber);
+        this.props.getUsers(pageNumber, this.props.pageSize,);
     }
 
     render() {
@@ -25,7 +24,6 @@ class UsersContainer extends React.Component {
                    totalUserCount={this.props.totalUserCount}
                    pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}
-
                 //callback
                    followingInProgress={this.props.followingInProgress}
                    unFollow={this.props.unFollow}
@@ -52,7 +50,7 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     togleFollowingProgress,
     getUsers,
-    getPagePresent,
+    //   getPagePresent,
     follow,
     unFollow,
 })(UsersContainer);

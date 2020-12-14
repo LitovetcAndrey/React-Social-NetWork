@@ -2,12 +2,8 @@ import React from "react";
 import s from "./UserItem.module.css"
 import userPhoto from "../../../assets/images/user.png"
 import {NavLink} from 'react-router-dom';
-import * as axios from "axios";
-import {usersAPI} from "./../../../api/api"
-import {unFollow,follow} from "./../../../redux/users-reduser"
 
 const UserItem = (props) => {
-    //debugger
     return (
         <div className={s.container}>
             <div className={s.photo}>

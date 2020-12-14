@@ -86,6 +86,7 @@ export const togleFollowingProgress = (isFetching, userId) => ({
 export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
+        dispatch(setCurrentPage(currentPage));
 
         usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(toggleIsFetching(false));
@@ -95,43 +96,29 @@ export const getUsers = (currentPage, pageSize) => {
     }
 };
 
-export const getPagePresent = (pageSize, pageNumber) => {
-    return (dispatch) => {
-        dispatch(toggleIsFetching(true));
-        dispatch(setCurrentPage(pageNumber));
-
-        usersAPI.getUsers(pageNumber, pageSize).then(data => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setUsersTotalCount(data.totalCount));
-        });
-    }
-}
-
 export const unFollow = (userId) => {
     return (dispatch) => {
-      dispatch(togleFollowingProgress(true,userId));
+        dispatch(togleFollowingProgress(true, userId));
         usersAPI.unFollowSuccess(userId).then(data => {
-            if (data.resultCode == 0) {
-               dispatch(unFollowSuccess(userId));
+            if (data.resultCode === 0) {
+                dispatch(unFollowSuccess(userId));
             }
-           dispatch(togleFollowingProgress(false,userId));
+            dispatch(togleFollowingProgress(false, userId));
         });
     }
 };
 
 export const follow = (userId) => {
     return (dispatch) => {
-        dispatch(togleFollowingProgress(true,userId));
+        dispatch(togleFollowingProgress(true, userId));
         usersAPI.followSuccess(userId).then(data => {
-            if (data.resultCode == 0) {
+            if (data.resultCode === 0) {
                 dispatch(followSuccess(userId));
             }
-            dispatch(togleFollowingProgress(false,userId));
+            dispatch(togleFollowingProgress(false, userId));
         });
     }
 };
-
 
 
 export default usersReducer;

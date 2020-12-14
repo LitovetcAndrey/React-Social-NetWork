@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import HeaderContainer from "./components/Header/HeaderContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import Profile from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Aside from "./components/Aside/Aside";
