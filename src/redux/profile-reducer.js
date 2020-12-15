@@ -49,8 +49,8 @@ export const updateNewPostChange = (text) => ({
 
 //thunk
 export const getUserProfile=(userId)=>(dispatch)=>{
-        usersAPI.getProfile(userId).then(data => {
-                dispatch(setUserProfile(data));
+        usersAPI.getProfile(userId).then(response => {
+                dispatch(setUserProfile(response.data));
         });
 }
 
